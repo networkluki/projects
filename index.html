@@ -129,7 +129,7 @@
 
         <div class="row">
           <div class="col-md-6">
-            <div class="project-card">
+            <div class="project-card" data-repo="networkluki/networkluki.github.io">
               <div class="pc-head"><h4>Example project</h4><span class="status-badge status-active">Active</span></div>
               <p>Short one-line description — replace with the real project.</p>
               <div class="pc-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> <span class="pc-date">2026-10-08 · 14:30</span></div>
@@ -137,7 +137,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="project-card">
+            <div class="project-card" data-repo="networkluki/projects">
               <div class="pc-head"><h4>Example project</h4><span class="status-badge status-planning">Planning</span></div>
               <p>Short one-line description — replace with the real project.</p>
               <div class="pc-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> <span class="pc-date">2026-10-08 · 14:30</span></div>
@@ -240,6 +240,38 @@
         el.setAttribute("href", "https://github.com/" + OWNER + "/" + REPO + "/commit/" + sha);
       })
       .catch(function () { /* keep the fallback link */ });
+  })();
+</script>
+
+<script>
+  // Auto-fill each project card's date with its repo's last-updated time
+  // (GitHub API, repo.pushed_at). Cards without a valid data-repo keep the
+  // static .pc-date text. Note: unauthenticated GitHub API = 60 req/h per IP.
+  (function () {
+    "use strict";
+    if (!window.fetch) { return; }
+    var cards = document.querySelectorAll(".project-card[data-repo]");
+    function pad(n) { return String(n).padStart(2, "0"); }
+    for (var i = 0; i < cards.length; i++) {
+      (function (card) {
+        var slug = card.getAttribute("data-repo");
+        if (!/^[\w.-]+\/[\w.-]+$/.test(slug)) { return; }
+        var dateEl = card.querySelector(".pc-date");
+        if (!dateEl) { return; }
+        fetch("https://api.github.com/repos/" + slug,
+              { headers: { "Accept": "application/vnd.github+json" } })
+          .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+          .then(function (d) {
+            var iso = d && d.pushed_at;
+            if (!iso) { return; }
+            var dt = new Date(iso);
+            if (isNaN(dt.getTime())) { return; }
+            dateEl.textContent = dt.getFullYear() + "-" + pad(dt.getMonth() + 1) + "-" +
+              pad(dt.getDate()) + " · " + pad(dt.getHours()) + ":" + pad(dt.getMinutes());
+          })
+          .catch(function () { /* keep static fallback */ });
+      })(cards[i]);
+    }
   })();
 </script>
 </body>
