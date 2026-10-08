@@ -54,7 +54,9 @@
       .project-card:hover{transform:translateY(-3px);border-color:var(--hover);box-shadow:0 8px 24px rgba(0,0,0,.08)}
       .project-card .pc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
       .project-card h4{font-size:16px;font-weight:500;letter-spacing:.2px;margin:0}
-      .project-card p{font-size:13px;line-height:20px;font-weight:300;opacity:.7;margin:0 0 12px}
+      .project-card p{font-size:13px;line-height:20px;font-weight:300;opacity:.7;margin:0 0 8px}
+      .project-card .pc-meta{font-family:'SFMono-Regular',Menlo,Consolas,'Liberation Mono','Courier New',monospace;font-size:11px;opacity:.5;margin:0 0 12px}
+      .project-card .pc-meta .fa{margin-right:5px}
       .project-card .pc-links a{font-size:12px;color:var(--hover);text-decoration:none;margin-right:14px}
       .project-card .pc-links a:hover{text-decoration:underline}
       .status-badge{
@@ -130,6 +132,7 @@
             <div class="project-card">
               <div class="pc-head"><h4>Example project</h4><span class="status-badge status-active">Active</span></div>
               <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> <span class="pc-date">2026-10-08 · 14:30</span></div>
               <div class="pc-links"><a href="#">Repo</a><a href="#">Live</a></div>
             </div>
           </div>
@@ -137,6 +140,7 @@
             <div class="project-card">
               <div class="pc-head"><h4>Example project</h4><span class="status-badge status-planning">Planning</span></div>
               <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> <span class="pc-date">2026-10-08 · 14:30</span></div>
               <div class="pc-links"><a href="#">Repo</a></div>
             </div>
           </div>
@@ -147,6 +151,7 @@
             <div class="project-card">
               <div class="pc-head"><h4>Example project</h4><span class="status-badge status-soon">Coming soon</span></div>
               <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> <span class="pc-date">2026-10-08 · 14:30</span></div>
               <div class="pc-links"><a href="#">Repo</a></div>
             </div>
           </div>
@@ -154,6 +159,7 @@
             <div class="project-card">
               <div class="pc-head"><h4>Example project</h4><span class="status-badge status-construction">Under construction</span></div>
               <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> <span class="pc-date">2026-10-08 · 14:30</span></div>
               <div class="pc-links"><a href="#">Repo</a></div>
             </div>
           </div>
@@ -173,6 +179,7 @@
             <div class="project-card">
               <div class="pc-head"><h4>Archived project</h4><span class="status-badge status-archived">Archived</span></div>
               <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> <span class="pc-date">2026-10-08 · 14:30</span></div>
               <div class="pc-links"><a href="#">Repo</a></div>
             </div>
           </div>
@@ -180,6 +187,7 @@
             <div class="project-card">
               <div class="pc-head"><h4>Archived project</h4><span class="status-badge status-archived">Archived</span></div>
               <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> <span class="pc-date">2026-10-08 · 14:30</span></div>
               <div class="pc-links"><a href="#">Repo</a></div>
             </div>
           </div>
@@ -195,7 +203,7 @@
   <div class="footer-status">
     <span class="high"><strong>1</strong> high</span>
     <span class="medium"><strong>1</strong> medium</span>
-    <span class="low"><strong>5</strong> low</span>
+    <span class="low"><strong>6</strong> low</span>
   </div>
 
   <div class="footer-copyright">
