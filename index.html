@@ -1,44 +1,238 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="author" content="networkluki">
-<meta name="robots" content="index, follow">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Projects: Webiste coming soon</title>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Luki Hackwell" />
+    <meta name="copyrights" content="Luki Hackwell" />
+    <meta name="description" content="Projects — things I'm building, planning and have shipped." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-<link rel="apple-touch-icon" sizes="57x57" href="/assets/imgs/icons/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/assets/imgs/icons/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/assets/imgs/icons/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/assets/imgs/icons/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/assets/imgs/icons/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/assets/imgs/icons/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/assets/imgs/icons/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/assets/imgs/icons/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/imgs/icons/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/imgs/icons/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/imgs/icons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/assets/imgs/icons/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/imgs/icons/favicon-16x16.png">
-<link rel="manifest" href="/assets/imgs/icons/manifest.json">
-<meta name="msapplication-TileImage" content="/assets/imgs/icons/ms-icon-144x144.png">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Projects - networkluki</title>
+    <meta name="title" content="Projects - networkluki" />
+    <link rel="canonical" href="https://lukihackwell.com/projects/" />
 
-<link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
-<style>
-html, body { height: 100%; margin: 0; }
-#container {
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-}
-</style>
+    <!-- Stylesheets (shared with the main site via CDN + /assets) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/css/custom.css?v=1.0.4" />
+
+    <!-- Theme applied before first paint -->
+    <script src="/assets/js/theme-init.js"></script>
+
+    <!-- Icons (shared with the main site) -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/imgs/icons/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/imgs/icons/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/imgs/icons/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/imgs/icons/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/imgs/icons/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/imgs/icons/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/imgs/icons/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/imgs/icons/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/imgs/icons/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/imgs/icons/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/imgs/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/imgs/icons/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/imgs/icons/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/assets/imgs/icons/favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="/assets/imgs/icons/manifest.json" />
+    <meta name="msapplication-TileColor" content="#2c001e" />
+    <meta name="theme-color" content="#2c001e" />
+
+    <!-- Projects-page-specific styling (project cards + status badges) -->
+    <style>
+      .projects .row{margin-bottom:0}
+      .project-card{
+        text-align:left;
+        border:1px solid var(--border);
+        border-radius:12px;
+        padding:20px 22px;
+        margin-bottom:24px;
+        transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
+      }
+      .project-card:hover{transform:translateY(-3px);border-color:var(--hover);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+      .project-card .pc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+      .project-card h4{font-size:16px;font-weight:500;letter-spacing:.2px;margin:0}
+      .project-card p{font-size:13px;line-height:20px;font-weight:300;opacity:.7;margin:0 0 12px}
+      .project-card .pc-links a{font-size:12px;color:var(--hover);text-decoration:none;margin-right:14px}
+      .project-card .pc-links a:hover{text-decoration:underline}
+      .status-badge{
+        font-family:'SFMono-Regular',Menlo,Consolas,'Liberation Mono','Courier New',monospace;
+        font-size:10px;text-transform:uppercase;letter-spacing:.5px;
+        padding:3px 9px;border-radius:999px;white-space:nowrap;
+        border:1px solid currentColor;opacity:.9;
+      }
+      .status-active{color:#27c93f}
+      .status-planning{color:#6ca0ff}
+      .status-soon{color:#ffbd2e}
+      .status-construction{color:#ff8c42}
+      .status-archived{color:#8a8f98}
+      .archived .project-card{opacity:.75}
+    </style>
 </head>
 <body>
-<div id="container">
-<p>This website is under construction!</p>
-</div>
+  <div class="theme-switch">
+    <button type="button" id="themeSwitch" class="theme-switch__btn"
+            role="switch" aria-checked="false" aria-label="Växla mellan ljust och mörkt tema">
+      <i class="fa fa-sun-o theme-switch__icon theme-switch__icon--sun" aria-hidden="true"></i>
+      <i class="fa fa-moon-o theme-switch__icon theme-switch__icon--moon" aria-hidden="true"></i>
+      <span class="theme-switch__knob"></span>
+    </button>
+  </div>
+
+  <div class="top">
+    <div class="container">
+      <div class="clock-bar"><span id="clock-greeting"></span><br><span id="clock-time"></span></div>
+      <div class="profile-image">
+        <img src="/assets/imgs/ghpro.png">
+      </div>
+
+      <h1>Luki Hackwell<small>@networkluki — Developer • DevOps • Security</small></h1>
+      <nav class="hero-links">
+        <a href="/#about">Portfolio</a>
+        <a href="#projects">Projects</a>
+        <a href="https://blog.networkluki.com/blog/" target="_blank" rel="noopener noreferrer">Blog</a>
+      </nav>
+
+      <p>
+	Self-taught developer working with Linux, backend systems, automation, infrastructure and defensive security.
+	  </p>
+      <div class="hero-tagline">Building • Breaking • Hardening • Automating</div>
+      <hr>
+      <div class="contact-info">
+        <span class="item">
+          <a href="mailto:dev.networkluki@gmail.com"><i class="fa fa-envelope-o"></i></a>
+        </span>
+
+        <span class="item">
+          <a href="https://github.com/networkluki" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a>
+        </span>
+
+        <span class="item">
+          <a href="https://x.com/networkluki" target="_blank" rel="noopener noreferrer" aria-label="X"><svg class="x-icon" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+        </span>
+
+        <span class="item">
+          <a href="https://www.reddit.com/user/networkluki" target="_blank" rel="noopener noreferrer"><i class="fa fa-reddit"></i></a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content" id="projects">
+    <div class="container">
+      <h3>Projects</h3>
+      <div class="projects">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="project-card">
+              <div class="pc-head"><h4>Example project</h4><span class="status-badge status-active">Active</span></div>
+              <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-links"><a href="#">Repo</a><a href="#">Live</a></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="project-card">
+              <div class="pc-head"><h4>Example project</h4><span class="status-badge status-planning">Planning</span></div>
+              <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-links"><a href="#">Repo</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="project-card">
+              <div class="pc-head"><h4>Example project</h4><span class="status-badge status-soon">Coming soon</span></div>
+              <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-links"><a href="#">Repo</a></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="project-card">
+              <div class="pc-head"><h4>Example project</h4><span class="status-badge status-construction">Under construction</span></div>
+              <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-links"><a href="#">Repo</a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="container">
+      <h3>Archive</h3>
+      <div class="projects archived">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="project-card">
+              <div class="pc-head"><h4>Archived project</h4><span class="status-badge status-archived">Archived</span></div>
+              <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-links"><a href="#">Repo</a></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="project-card">
+              <div class="pc-head"><h4>Archived project</h4><span class="status-badge status-archived">Archived</span></div>
+              <p>Short one-line description — replace with the real project.</p>
+              <div class="pc-links"><a href="#">Repo</a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<footer>
+  <div class="footer-version">v1.1.5</div>
+
+  <div class="footer-status">
+    <span class="high"><strong>1</strong> high</span>
+    <span class="medium"><strong>1</strong> medium</span>
+    <span class="low"><strong>5</strong> low</span>
+  </div>
+
+  <div class="footer-copyright">
+    &copy; <span id="current-year"></span> networkluki.com
+  </div>
+
+  <div class="footer-left">
+    <a id="latest-diff" href="https://github.com/networkluki/projects/commits/main" target="_blank" rel="noopener noreferrer">version</a>
+  </div>
+
+  <div class="footer-right"><span id="years-left"></span> Years left</div>
+</footer>
+
+<!-- Scripts (shared theme/clock/age + projects-repo commit link) -->
+<script src="/assets/js/year.js"></script>
+<script src="/assets/js/theme-switch.js"></script>
+<script src="/assets/js/age.js?v=1.0.2" defer></script>
+<script src="/assets/js/time.js" defer></script>
+<script>
+  // Point the footer "version#" link at this (projects) repo's latest commit.
+  (function () {
+    "use strict";
+    var el = document.getElementById("latest-diff");
+    if (!el || !window.fetch) { return; }
+    var OWNER = "networkluki", REPO = "projects";
+    fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/commits?per_page=1",
+          { headers: { "Accept": "application/vnd.github+json" } })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function (d) {
+        if (!Array.isArray(d) || d.length === 0) { return; }
+        var sha = d[0] && d[0].sha;
+        if (typeof sha !== "string" || !/^[0-9a-f]{40}$/.test(sha)) { return; }
+        el.textContent = "version#" + sha.slice(0, 7);
+        el.setAttribute("href", "https://github.com/" + OWNER + "/" + REPO + "/commit/" + sha);
+      })
+      .catch(function () { /* keep the fallback link */ });
+  })();
+</script>
 </body>
 </html>
